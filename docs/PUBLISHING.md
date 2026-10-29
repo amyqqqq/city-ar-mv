@@ -14,6 +14,7 @@
 2. GitHub Desktop → File → Add local repository，選目前 CITY_AR_MV_CODEX 根目錄。
 3. Publish repository：Name=city-ar-mv，取消 Keep this code private，以 Public 發布；不建立新本機專案。
 4. 倉庫 Settings → Pages → Source=GitHub Actions。Actions 的 Pages workflow 在 main push／手動執行時建置、稽核、測試並部署 dist。
+   初次啟用須由倉庫管理者在此設定完成。部署工作先以唯讀 API 確認既有 Pages 且 build_type=workflow，失敗則提供設定連結；configure-pages 使用 enablement=false，不會用 GITHUB_TOKEN 建立網站。Resource not accessible by integration 不以增加 Token 權限或加入 PAT 處理。
 5. workflow 僅授予建置 contents:read、部署 pages:write / id-token:write；不需要把 PAT 寫入專案或前端。
 
 官方流程參考：[GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。本地原始音訊已封存為 assets/audio/trap_15s.m4a 並鎖 hash，避免 Ubuntu 與 Windows FFmpeg 版本差異改變既有音效位元組。

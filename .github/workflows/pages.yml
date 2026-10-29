@@ -38,15 +38,41 @@ jobs:
     needs: build
     runs-on: ubuntu-24.04
     permissions:
+      contents: read
       pages: write
       id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Verify Pages was enabled by a repository administrator
+        env:
+          PAGES_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import json, os, sys, urllib.request, urllib.error
+          repository = os.environ['GITHUB_REPOSITORY']
+          settings = f'https://github.com/{repository}/settings/pages'
+          request = urllib.request.Request(
+              f'https://api.github.com/repos/{repository}/pages',
+              headers={'Authorization': 'Bearer ' + os.environ['PAGES_TOKEN'],
+                       'Accept': 'application/vnd.github+json',
+                       'User-Agent': 'city-ar-pages-preflight'})
+          try:
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  pages = json.load(response)
+          except urllib.error.HTTPError as error:
+              print(f'::error::Cannot read existing Pages site (HTTP {error.code}). An administrator must open {settings} and select Build and deployment > Source > GitHub Actions. GITHUB_TOKEN is not used to create a Pages site.')
+              sys.exit(1)
+          if pages.get('build_type') != 'workflow':
+              print(f'::error::Pages Source is {pages.get("build_type")!r}; select GitHub Actions at {settings} before rerunning this workflow.')
+              sys.exit(1)
+          print('Existing Pages site confirmed; Source=GitHub Actions; URL=' + pages.get('html_url', ''))
+          PY
       - uses: actions/configure-pages@v5
         with:
-          enablement: true
+          # First-time enablement belongs in repository Settings > Pages.
+          enablement: false
       - name: Deploy GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
