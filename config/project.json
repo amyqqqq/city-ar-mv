@@ -1,0 +1,88 @@
+{
+  "name": "CITY AR MV Generator",
+  "engine": "8th Wall",
+  "target": "city_painting",
+  "duration_seconds": 15,
+  "fps": 30,
+  "resolution": [
+    720,
+    1280
+  ],
+  "style": "surreal experimental trap",
+  "character": "photorealistic adult fictional performer",
+  "music": "original instrumental trap",
+  "bpm": 140,
+  "tracking_lost_policy": "pause",
+  "asset_mode": "generated",
+  "asset_imports": {
+    "characters": {
+      "source": "new_assets/trap_character.png",
+      "license": "User supplied and explicitly authorized integration into this CITY AR MV project; no additional rights inferred",
+      "description": "User supplied transparent realistic Trap performer; preserve original RGBA pixels"
+    },
+    "backgrounds": {
+      "source": "new_assets/trap_city.png",
+      "license": "User supplied and explicitly authorized integration into this CITY AR MV project; no additional rights inferred",
+      "description": "User supplied transparent surreal neon city stage; preserve original RGBA pixels"
+    },
+    "music": {
+      "source": "tests/fixtures/original_export/assets/city_ambient.mp3",
+      "license": "User-provided original export audio; retained for local project preview; commercial rights unverified",
+      "description": "Keep existing city_ambient audio and the existing 15 second trim/fade"
+    }
+  },
+  "layout": {
+    "background": {
+      "width": 1,
+      "z": 0.02
+    },
+    "character": {
+      "width": 0.39,
+      "x": 0.015,
+      "ground_y": -0.15,
+      "foot_uv": 0.988,
+      "z": 0.06
+    }
+  },
+  "tools": {
+    "codex": "required for development only",
+    "qwen_llama_cpp": "optional",
+    "pi_agent": "optional",
+    "comfyui": "optional local image generation",
+    "ace_step": "optional local music generation",
+    "ffmpeg": "required for assembly"
+  },
+  "timeline": [
+    {
+      "from": 0,
+      "to": 3,
+      "scene": "city awakening"
+    },
+    {
+      "from": 3,
+      "to": 6,
+      "scene": "performer emerges"
+    },
+    {
+      "from": 6,
+      "to": 9,
+      "scene": "duplication and bass distortions"
+    },
+    {
+      "from": 9,
+      "to": 12,
+      "scene": "architectural impossible shifts"
+    },
+    {
+      "from": 12,
+      "to": 15,
+      "scene": "climax and reset"
+    }
+  ],
+  "audio_reference": {
+    "description": "AAC from original-material preview before Trap image replacement; existing FFmpeg 2025-08-18 build",
+    "source_sha256": "e9c5b0c02534ae814f9e4fcddec953c3070dc603304ee44ddb5ed8b91472e9f4",
+    "encoded_sha256": "dd9d87f1c1916c7b10c6f7fc8406fd1f9f1bb1db647a8deb7c12ab96c5d21507",
+    "path": "assets/audio/trap_15s.m4a"
+  }
+}

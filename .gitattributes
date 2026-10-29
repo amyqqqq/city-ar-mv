@@ -1,0 +1,11 @@
+* text=auto eol=lf
+# Preserve original backups, target geometry and approved media byte-for-byte.
+original_export/** -text
+source_original/** -text
+new_assets/** -text
+assets/audio/** -text
+*.png -text
+*.jpg -text
+*.mp3 -text
+*.m4a -text
+*.zip -text

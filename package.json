@@ -1,0 +1,10 @@
+{
+  "name": "city-ar-mv",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/js/*.test.mjs",
+    "build": "python -m pipeline compose",
+    "start": "python -m pipeline serve"
+  }
+}

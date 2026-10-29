@@ -1,0 +1,52 @@
+name: Build, test and deploy real AR to Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install FFmpeg from Ubuntu repository
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Audit public files and secrets
+        run: python scripts/public_audit.py
+      - name: Build existing project
+        run: python -m pipeline compose
+      - name: Run full Python and JavaScript tests
+        run: |
+          python -m unittest discover -s tests -p 'test_*.py' -v
+          node --test tests/js/*.test.mjs
+          python -m pipeline validate
+          python scripts/check_publish.py
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

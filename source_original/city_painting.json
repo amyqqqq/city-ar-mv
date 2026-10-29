@@ -1,0 +1,23 @@
+{
+  "type": "PLANAR",
+  "properties": {
+    "top": 0,
+    "left": 71,
+    "width": 581,
+    "height": 775,
+    "isRotated": true,
+    "originalWidth": 724,
+    "originalHeight": 775
+  },
+  "imagePath": "image-targets/city_painting_luminance.jpg",
+  "metadata": null,
+  "name": "city_painting",
+  "resources": {
+    "originalImage": "city_painting_original.jpg",
+    "croppedImage": "city_painting_cropped.jpg",
+    "thumbnailImage": "city_painting_thumbnail.jpg",
+    "luminanceImage": "city_painting_luminance.jpg"
+  },
+  "created": 1792633226633,
+  "updated": 1792633341900
+}

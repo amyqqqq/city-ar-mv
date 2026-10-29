@@ -1,0 +1,11 @@
+{
+  "protected": {
+    "original_export/html-export-20261022T033950485Z.zip": "15f2f2c5270818e35b479ba80694d74800cdce4a11e9c246eae6adc48c6f0f31",
+    "source_original/assets/character.png": "1a2a10a42aae9d354ed3e85b68303b3462fe034980c96f0a3a578b90516f7639",
+    "source_original/assets/night_city.png": "35f74827d85d05c841a9bddb028e1c51a59ebcf699d2491b861c5f75c657d111",
+    "source_original/city_painting.json": "f3f9ce2903e598c0f2b30f3ce1ff51d3d2239160cb287257e4fd263da256675c",
+    "source_original/image-targets/city_painting.json": "f3f9ce2903e598c0f2b30f3ce1ff51d3d2239160cb287257e4fd263da256675c",
+    "source_original/image-targets/city_painting_luminance.jpg": "d3cd4b40a985609b45d00a632cc07e35eb6309a40edb47952b586e69a47adb19",
+    "source_original/image-targets/city_painting_original.jpg": "a8e2f1039b65f8b6fcef934c5a8af85e15534d2f6ca16ee7ff6425c8a04d6f6e"
+  }
+}

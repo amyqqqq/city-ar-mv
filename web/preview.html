@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CITY / AR MV — 15 秒播放器</title><link rel="stylesheet" href="style.css">
+</head>
+<body data-mode="preview">
+  <header><a class="brand" href="./">CITY <span>/ AR MV</span></a><nav><a href="ar.html">開啟 AR 相機 ↗</a><a href="acceptance.html">手機驗收 ↗</a></nav></header>
+  <main>
+    <section class="intro"><p class="eyebrow">15 SECOND EXPERIMENT / PHASE 02</p><h1>城市喚醒。<br><span>節奏浮現。</span></h1><p id="mode">素材載入中</p><p class="note">桌面模式可測試音畫時間軸與辨識遺失流程。實際圖像辨識請使用 AR 相機。</p></section>
+    <section class="viewer" aria-label="MV 預覽">
+      <div class="view-label"><span id="tracking">模擬辨識</span><span>8TH WALL / 15s</span></div>
+      <div id="stage"><img id="background" alt="透明霓虹城市舞台"><img id="character" alt="透明 Trap 人物前景"><div class="scan-line"></div></div>
+      <div class="readout"><span id="scene">CITY AWAKENING</span><output id="time">0.00 / 15.00 s</output></div>
+      <progress id="progress" max="15" value="0" aria-label="播放進度"></progress>
+    </section>
+    <section class="controls"><p id="status" role="status">載入素材中…</p><div class="buttons"><button id="start" disabled>開始 / 啟用聲音</button><button id="pause" disabled>暫停</button><button id="restart" disabled>重新播放</button></div><div class="options"><button id="found" class="small">模擬找到目標</button><button id="lost" class="small">模擬失去目標</button><label><input type="checkbox" id="low-power">低負載動畫</label></div></section>
+    <ol class="segments"><li data-segment="0"><span>00—03</span>城市喚醒</li><li data-segment="1"><span>03—06</span>人物浮現</li><li data-segment="2"><span>06—09</span>低頻錯位</li><li data-segment="3"><span>09—12</span>城市移動</li><li data-segment="4"><span>12—15</span>高潮收束</li></ol>
+  </main><footer>使用者提供的新人物與城市 · 原有音效 · 15 秒程式化分層動畫</footer>
+  <script type="module" src="app.js"></script>
+</body></html>
