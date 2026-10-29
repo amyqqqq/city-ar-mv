@@ -26,9 +26,9 @@
       "description": "User supplied transparent surreal neon city stage; preserve original RGBA pixels"
     },
     "music": {
-      "source": "tests/fixtures/original_export/assets/city_ambient.mp3",
+      "source": "new_assets/trap_music.m4a",
       "license": "User-provided original export audio; retained for local project preview; commercial rights unverified",
-      "description": "Keep existing city_ambient audio and the existing 15 second trim/fade"
+      "description": "User supplied replacement music; trim to 15 seconds and regenerate audio analysis"
     }
   },
   "layout": {
@@ -79,10 +79,5 @@
       "scene": "climax and reset"
     }
   ],
-  "audio_reference": {
-    "description": "AAC from original-material preview before Trap image replacement; existing FFmpeg 2025-08-18 build",
-    "source_sha256": "e9c5b0c02534ae814f9e4fcddec953c3070dc603304ee44ddb5ed8b91472e9f4",
-    "encoded_sha256": "dd9d87f1c1916c7b10c6f7fc8406fd1f9f1bb1db647a8deb7c12ab96c5d21507",
-    "path": "assets/audio/trap_15s.m4a"
-  }
+  "audio_reference": {}
 }
