@@ -18,7 +18,8 @@ function image(url) {
 }
 
 export async function loadAssets(manifestUrl = './manifest.json') {
-  const manifest = validateManifest(await (await fetchLocal(manifestUrl)).json());
+  const manifest = validateManifest(typeof manifestUrl === 'string'
+    ? await (await fetchLocal(manifestUrl)).json() : manifestUrl);
   const Context = globalThis.AudioContext || globalThis.webkitAudioContext;
   if (!Context) throw new Error('此瀏覽器不支援 WebAudio');
   const context = new Context();

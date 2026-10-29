@@ -1,12 +1,16 @@
 <!doctype html>
-<html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>CITY / AR MV — city_painting</title><link rel="stylesheet" href="style.css">
+<html lang="zh-Hant"><head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#000000"><title>CITY AR MV</title><link rel="stylesheet" href="ar.css">
   <script crossorigin="anonymous" src="external/runtime/runtime.js"></script>
-  <script crossorigin="anonymous" src="external/xr/xr.js" async data-preload-chunks="face, slam"></script>
+  <script crossorigin="anonymous" src="external/xr/xr.js" async data-preload-chunks="slam"></script>
 </head><body data-mode="ar">
-  <header><a class="brand" href="./">CITY <span>/ AR MV</span></a><nav><a href="preview.html">桌面預覽</a><a href="acceptance.html">手機驗收</a></nav></header>
-  <main class="ar-panel"><p id="mode">素材載入中</p><p id="tracking">等待 city_painting</p><p id="status" role="status">初始化 8th Wall…</p><p id="scene"></p><output id="time">0.00 / 15.00 s</output><progress id="progress" max="15" value="0"></progress><div class="buttons"><button id="start" disabled>開始 / 啟用聲音</button><button id="pause" disabled>暫停</button><button id="restart" disabled>重新播放</button></div><label><input id="low-power" type="checkbox" checked>低負載動畫</label></main>
-  <p style="position:fixed;top:90px;left:16px;right:16px;z-index:30;font-size:12px;background:#10140fe8;padding:10px">請用手機 HTTPS 開啟並掃描 city_painting。原場景停用桌面 AR；桌面請使用預覽模式。</p>
-  <section class="ar-diagnostics"><button id="enable-camera">啟動 8th Wall AR 相機</button><p id="xr-status" role="status">相機尚未啟動</p><details><summary>AR 驗收紀錄（只記錄實際事件）</summary><pre id="ar-evidence"></pre><label><input id="heard-audio" type="checkbox">我已在手機上實際聽到聲音</label><label><input id="visual-anchor" type="checkbox">我已確認人物與舞台跟隨實體圖像</label><button id="export-evidence">下載本機驗收 JSON</button></details></section>
-  <script type="module" src="app.js"></script>
+  <button id="sound-start" class="sound-start" hidden>開始</button>
+  <section id="fatal" class="fatal" role="alert" hidden><p id="fatal-message"></p><button id="retry">重試</button></section>
+  <section id="desktop-debug" class="desktop-debug" hidden>
+    <nav><a href="preview.html">桌面預覽</a> · <a href="acceptance.html">手機驗收</a></nav>
+    <pre id="ar-evidence"></pre><output id="debug-time"></output>
+    <div><button id="debug-pause">暫停</button><button id="debug-resume">續播</button><button id="debug-restart">重播</button><button id="export-evidence">下載紀錄</button></div>
+  </section>
+  <script type="module" src="ar-app.js"></script>
 </body></html>

@@ -85,3 +85,7 @@ Qwen/llama.cpp、Pi Agent 預設不使用。未安裝大型模型、未公開部
 ## GitHub Pages 發布
 
 正式根入口會導向真正的 `ar.html`；桌面播放器改為 `preview.html`。手機驗收使用 `acceptance.html`。GitHub Desktop 與 Actions 的發布流程、公開檔案排除與驗收界限見 `docs/PUBLISHING.md`。
+
+## 極簡手機 AR
+
+正式 ar.html 會自動啟動相機，辨識 city_painting 後自動演出；僅音訊受限時顯示一顆「開始」。15秒結束後點畫面或重新掃描可重播。完整控制留在桌面 preview.html，桌面 ar.html?debug=1 可開發除錯，手機不顯示診斷UI。詳見 docs/MINIMAL_AR.md。新版共51項測試，手機硬體驗收另行進行。

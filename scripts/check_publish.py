@@ -32,16 +32,19 @@ def check():
             assert (DIST/relative).exists(), f'Missing published link: {name}: {relative}'
     required = ['external/runtime/runtime.js','external/xr/xr.js','external/xr/xr-slam.js',
                 'external/runtime/LICENSE','external/xr/LICENSE','image-targets/city_painting.json',
-                'image-targets/city_painting_luminance.jpg','runtime/ecs-bridge.js','scene.json']
+                'image-targets/city_painting_luminance.jpg','runtime/ecs-bridge.js','scene.json',
+                'ar-app.js','ar.css','runtime/automatic-playback.js']
     manifest = json.loads((DIST/'manifest.json').read_text(encoding='utf-8'))
     required += list(manifest['assets'].values())
     for path in required:
         assert (DIST/path).is_file(), f'Missing AR runtime/asset: {path}'
     ar = (DIST/'ar.html').read_text(encoding='utf-8')
     assert 'external/runtime/runtime.js' in ar and 'external/xr/xr.js' in ar
-    app = (DIST/'app.js').read_text(encoding='utf-8')
+    app = (DIST/'ar-app.js').read_text(encoding='utf-8')
     assert 'window.ecs.application.init(scene)' in app and 'imageTargetData: [target]' in app
-    assert "player.targetFound(manifest.target)" in app.split('} else {',1)[1], 'Preview simulation must be separate'
+    assert 'void initializeXR().catch(fail)' in app, 'AR must boot without a Start Camera button'
+    assert "player.targetFound(manifest.target)" not in app, 'Production AR cannot simulate detection'
+    assert "player.targetFound(manifest.target)" in (DIST/'app.js').read_text(encoding='utf-8'), 'Desktop preview remains separate'
     target = json.loads((DIST/'image-targets/city_painting.json').read_text(encoding='utf-8'))
     assert target['name'] == 'city_painting'
     for folder in ('.env','.venv','generated','reports','original_export','source_original'):

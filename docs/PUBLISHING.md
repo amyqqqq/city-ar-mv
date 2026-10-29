@@ -22,7 +22,7 @@
 ## 正式入口及路徑
 
 - 根 index.html 導向 ar.html，是真正 AR 流程；不再是一般播放器。
-- ar.html：原 runtime/runtime.js、xr/xr.js 與 xr-slam.js，註冊原 city_painting target，點擊啟動相機後由 ecs.application.init(scene) 啟動。
+- ar.html：原 runtime/runtime.js、xr/xr.js 與 xr-slam.js，開頁即註冊 city_painting 並由 ecs.application.init(scene) 啟動相機；素材解碼並行，不以啟動按鈕阻擋 XR。
 - preview.html：獨立桌面模擬播放器。
 - acceptance.html：HTTPS、發布檔案、相機權限與手機驗收入口。
 - 所有瀏覽器路徑均相對目前專案根目錄，支援 /city-ar-mv/ 子路徑。`scripts/check_publish.py` 驗證 artifact 及路徑。
@@ -31,6 +31,6 @@
 
 使用真實 Android Chrome 與 iOS Safari；先開 acceptance.html，在另一螢幕／紙本顯示原辨識圖，再進入 AR。
 
-AR 頁的紀錄來自真實 camera lifecycle 與 ECS image found／updated／lost 事件。引擎載入不代表辨識通過，音訊時鐘播放不代表使用者聽到聲音。畫面貼合與有聲需手動確認；按下載可匯出本機 JSON，不會自動上傳相機或驗收資料。
+手機正式 AR 頁為極簡全螢幕，沒有診斷面板。桌面 ?debug=1 可查看真實 camera lifecycle 與 ECS image found／updated／lost，並下載 JSON；手機會忽略 debug 參數。引擎載入不代表辨識通過，音訊時鐘播放不代表使用者聽到聲音，畫面貼合與有聲仍需實機確認。沒有自動上傳相機或驗收資料。
 
 桌面相機預設停用是原場景設定。尚未在兩種手機驗證前，報告應保持待測，不能將 HTTPS 200 或預覽成功寫成追蹤成功。
